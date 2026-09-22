@@ -24,7 +24,7 @@ export default defineConfig({
             },
         },
         ssr: {
-            noExternal: ["@punish/slider-captcha"],
+            noExternal: ["@punish/slider-captcha", /@a-drowned-fish\/rox-v/],
         },
     },
 });
