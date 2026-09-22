@@ -1,0 +1,17 @@
+{
+    "name": "@monster-ui/docs-slider-captcha",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vitepress dev",
+        "build": "vitepress build && cp .vitepress/public/favicon.ico .vitepress/dist/favicon.ico",
+        "preview": "vitepress preview"
+    },
+    "dependencies": {
+        "@punish/slider-captcha": "^1.0.0"
+    },
+    "devDependencies": {
+        "vitepress": "^1.6.4"
+    }
+}

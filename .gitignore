@@ -1,0 +1,8 @@
+node_modules/
+.vitepress/dist/
+.vitepress/cache/
+.DS_Store
+*.log
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
