@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Loading } from "@a-drowned-fish/rox-v";
 import { onMounted, ref, useTemplateRef } from "vue";
 import { SliderCaptcha } from "@punish/slider-captcha";
 import type { SliderCaptchaTrackItem } from "@punish/slider-captcha";
@@ -15,14 +16,14 @@ const captchaRef = useTemplateRef("captchaRef");
 const verifyResult = ref<string>("");
 
 onMounted(() => {
-    fetch("https://mock.presstime.cn/mock/69d8c8165c2cd2d31df6900c/api/captcha")
+    fetch("https://ex.roxmotor.top/api/mock/captcha")
         .then((response) => response.json())
         .then((response) => (captchaData.value = response?.data));
 });
 
 const handleVerify = async (option: SliderCaptchaTrackItem) => {
     captchaVerifying.value = true;
-    return fetch("https://mock.presstime.cn/mock/69d8c8165c2cd2d31df6900c/api/verify")
+    return fetch("https://ex.roxmotor.top/api/mock/verify-captcha")
         .then((response) => response.json())
         .then((response) => response?.data?.passed)
         .finally(() => (captchaVerifying.value = false));
@@ -78,9 +79,7 @@ const handleReset = () => {
                         </svg>
                     </template>
                 </SliderCaptcha>
-                <div v-if="captchaVerifying" class="loading-mask">
-                    <div class="loading-spinner"></div>
-                </div>
+                <Loading :visible="captchaVerifying" dot-color="red" dot-size="60px" dot-gap="60px" amplitude="80px" />
             </div>
         </template>
         <div class="demo-actions">
@@ -105,28 +104,6 @@ const handleReset = () => {
 :deep(.track-thumb) {
     width: 60px !important;
     background-color: white;
-}
-.loading-mask {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.6);
-    z-index: 20;
-}
-.loading-spinner {
-    width: 32px;
-    height: 32px;
-    border: 3px solid #e2e8f0;
-    border-top-color: #65cd81;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-}
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
 }
 .demo-actions {
     display: flex;

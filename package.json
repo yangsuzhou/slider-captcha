@@ -9,6 +9,7 @@
         "preview": "vitepress preview"
     },
     "dependencies": {
+        "@a-drowned-fish/rox-v": "^1.1.65",
         "@punish/slider-captcha": "^1.0.0"
     },
     "devDependencies": {
